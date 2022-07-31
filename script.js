@@ -1,3 +1,22 @@
+//How to play window
+let howTo = document.getElementById('how-to');
+let helpWindow = document.getElementById('help');
+let closeButton = document.getElementById('close');
+
+function getHelp() {
+  helpWindow.style.display = 'block';
+  console.log('help')
+};
+
+howTo.addEventListener('click', getHelp)
+
+function closeHelp() {
+  helpWindow.style.display = 'none';
+};
+
+closeButton.addEventListener('click', closeHelp);
+
+
 // Add event listener to play button
 let playButton = document.getElementById('play');
 
@@ -49,7 +68,35 @@ window.addEventListener('keydown', (e) => {
       projectile.style.left = parseInt(projectile.style.left) + moveBy + 'px';
       break;
   }
-})
+
+
+});
+
+/*
+//Set left and right limits to projectile
+let field = document.getElementById('field');
+let brE = projectile.getBoundingClientRect();
+let brC = field.getBoundingClientRect();
+
+function updatePosition() {
+
+
+}
+
+document.addEventListener('keydown', updatePosition)
+
+
+function findContainment() {
+
+  if ((brE.left = brC.left) || (brE.right = brC.right)) {
+  return 'out of bounds'
+  }
+ else {
+  return 'in bounds' 
+ }
+};
+*/
+
 
 
 
