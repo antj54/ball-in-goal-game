@@ -18,6 +18,10 @@ header {
     
 }
 
+#how-to:hover {
+    color: white;
+}
+
 #field {
     height: 70rem;
     border: 10px solid white;
@@ -69,7 +73,7 @@ header {
     border: 1px solid black;
     position: relative;
     transition-property: all;
-    transition-duration: 2s;
+    transition-duration: 0.8s;
 }
 
 #platform {
@@ -90,6 +94,10 @@ footer {
     position: relative;
    
     margin-bottom: 10px;
+}
+
+#reset, #play:hover {
+    cursor: grab;
 }
 
 #play {
