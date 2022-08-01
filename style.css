@@ -54,13 +54,21 @@ header {
 
 #field {
     height: 70rem;
+    width: 65rem;
     border: 10px solid white;
     margin-top: 10px;
     margin-bottom: 10px;
+    position: relative;
     margin-left: 5%;
     margin-right: 5%;
+    overflow: hidden;
 }
 
+#field-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
 
 #goal {
    display: flex;
@@ -97,6 +105,8 @@ header {
     width: 100px;
     position: relative;
     border: 1px solid;
+    overflow: hidden;
+    
 }
 
 #ball {
