@@ -136,7 +136,7 @@ let scoreCount = document.getElementById('score');
 
 let celebrate = document.getElementById('celebration');
 let goalCele = document.createElement('h1');
-goalCele.id = 'Cele';
+goalCele.id = 'cele';
 goalCele.innerHTML = 'GOAL!!!'
 
 function updateBallCoordinates() {
@@ -145,9 +145,10 @@ function updateBallCoordinates() {
   if (newBallCoordinates.top <= newGoalCoordinates.bottom && 
       newBallCoordinates.left > newGoalCoordinates.left && 
       newBallCoordinates.right < newGoalCoordinates.right) {
-        console.log("GOAL");
+
         celebrate.appendChild(goalCele); //adds goal celebration
         return true;
+
       } else {
         celebrate.removeChild(goalCele);
       }
