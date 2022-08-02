@@ -87,10 +87,10 @@ let brC = field.getBoundingClientRect();
 function logCoordinates() {
   let x = projectile.getBoundingClientRect();
   console.log(x);
-  console.log(brC)
+  
 };
-
 window.addEventListener('keydown', logCoordinates)
+
 
 //alerts when left and right limits reached, keeps projectile in bounds 
 function findContainment() {
@@ -106,6 +106,7 @@ function findContainment() {
 };
 
 window.addEventListener('keydown', findContainment);//runs every time a key is pressed
+ 
 
 window.onresize = function(){ location.reload(); }//refresh window on resize
 
@@ -131,17 +132,27 @@ resetButton.addEventListener('mousedown', randomSpot)
 let ballCoordinates = ball.getBoundingClientRect();
 let goalMiddle = document.querySelector('.component-middle');
 let goalDetect = goalMiddle.getBoundingClientRect();
+let scoreCount = document.getElementById('score');
+
+let celebrate = document.getElementById('celebration');
+let goalCele = document.createElement('h1');
+goalCele.id = 'Cele';
+goalCele.innerHTML = 'GOAL!!!'
 
 function updateBallCoordinates() {
   let newBallCoordinates = ball.getBoundingClientRect();
   let newGoalCoordinates = goalMiddle.getBoundingClientRect();
-  if ((newBallCoordinates.top = newGoalCoordinates.bottom) && 
-      (newBallCoordinates.left > newGoalCoordinates.left) && 
-      (newBallCoordinates.right < newGoalCoordinates.right)) {
-        return 'goal';
-        
+  if (newBallCoordinates.top <= newGoalCoordinates.bottom && 
+      newBallCoordinates.left > newGoalCoordinates.left && 
+      newBallCoordinates.right < newGoalCoordinates.right) {
+        console.log("GOAL");
+        celebrate.appendChild(goalCele); //adds goal celebration
+        return true;
+      } else {
+        celebrate.removeChild(goalCele);
       }
+
 };
 
-window.setInterval(updateBallCoordinates, 1000); //updates ball coordinates every second
+window.setInterval(updateBallCoordinates, 100); //updates ball coordinates every 1/10 second
 
