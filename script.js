@@ -52,7 +52,7 @@ function down() {
 
 //Setting arrow key functionality
 let projectile = document.getElementById('projectile');
-let moveBy = 1;
+let moveBy = 10;
 
 
 window.addEventListener('load', () => {
@@ -63,10 +63,10 @@ window.addEventListener('load', () => {
 window.addEventListener('keydown', (e) => {
   switch (e.key) {
     case 'ArrowLeft':
-      projectile.style.left = parseInt(projectile.style.left) - moveBy + 'rem';
+      projectile.style.left = parseInt(projectile.style.left) - moveBy + 'px';
       break;
     case 'ArrowRight': 
-      projectile.style.left = parseInt(projectile.style.left) + moveBy + 'rem';
+      projectile.style.left = parseInt(projectile.style.left) + moveBy + 'px';
       break;
   }
 
@@ -88,21 +88,22 @@ function logCoordinates() {
 
 window.addEventListener('keydown', logCoordinates)
 
-//alerts when left and right limits reached
+//alerts when left and right limits reached, keeps projectile in bounds 
 function findContainment() {
   let left = projectile.getBoundingClientRect();
-  if ((left.left <= brC.left) || (left.right >= brC.right)) {
-    alert('Out of bounds!')
+  if ((left.left <= brC.left)) {
+    alert('Out of bounds!');
+    projectile.style.left = '100px';
   }
- else {
-  return 'in bounds' 
+ else if ((left.right >= brC.right)) {
+   alert('Out of bounds!');
+   projectile.style.left = '100px';
  }
 };
 
-window.addEventListener('keydown', findContainment);
+window.addEventListener('keydown', findContainment);//runs every time a key is pressed
 
-//refresh window on resize
-window.onresize = function(){ location.reload(); }
+window.onresize = function(){ location.reload(); }//refresh window on resize
 
 
 
