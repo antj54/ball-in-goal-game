@@ -3,7 +3,7 @@
 }
 
 body {
- background-color: green;
+ background-color: #60b922;
  overflow-x: hidden;
 }
 
@@ -16,8 +16,9 @@ header {
 
 #head {
     align-self: center;
-    
+
 }
+
 
 #help {
     display: none;
@@ -52,6 +53,17 @@ header {
     border-left: 2px solid black;
 }
 
+#cele {
+    margin-left: 42%;
+    margin-right: 42%;
+    text-align: center;
+    color: gold;
+    text-shadow: 2px 2px black;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #b93022 ;
+}
+
 #field {
     height: 70rem;
     width: 65rem;
@@ -80,7 +92,7 @@ header {
 }
 
 .component, .component-middle {
-    background-color: lightblue;
+    background-color: #22abb9;
     border: 1px solid black;
     
 }
