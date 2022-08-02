@@ -27,8 +27,12 @@ function play() {
   playButton.style.cursor = 'default';
 };
 
-playButton.addEventListener('mousedown', play);
-
+playButton.addEventListener('mousedown', play); // can trigger play with button click or enter key
+document.addEventListener('keypress', event => {
+  if (event.code === 'Enter') {
+    play()
+  }
+})
 
 // Defining ball variable and function to launch and retrieve ball
 let ball = document.getElementById('ball');
@@ -37,7 +41,7 @@ let resetButton = document.getElementById('reset');
 function up() {
 document.addEventListener('keydown', event => {
   if (event.code === 'Space') {
-    ball.style.bottom = '910px';
+    ball.style.bottom = '911px';
   }
 });
 resetButton.addEventListener("mousedown", down); //add reset button function on up()
@@ -52,7 +56,7 @@ function down() {
 
 //Setting arrow key functionality
 let projectile = document.getElementById('projectile');
-let moveBy = 10;
+let moveBy = 7;
 
 
 window.addEventListener('load', () => {
@@ -105,5 +109,39 @@ window.addEventListener('keydown', findContainment);//runs every time a key is p
 
 window.onresize = function(){ location.reload(); }//refresh window on resize
 
+//Make goal move randomly left or right each round
+let goal = document.getElementById('goal');
+let goalCoordinates = goal.getBoundingClientRect();
+let fieldWidth = brC.width
 
+function randomSpot() {
+  let spot = Math.floor(Math.random() * (fieldWidth - 170));
+  console.log(goalCoordinates)
+  console.log(spot);
+  goal.style.left = (spot + 'px');
+  if (spot >= fieldWidth) {
+    goal.style.right = '160px'
+  }
+  
+};
+
+resetButton.addEventListener('mousedown', randomSpot)
+
+//Detect when ball goes in goal
+let ballCoordinates = ball.getBoundingClientRect();
+let goalMiddle = document.querySelector('.component-middle');
+let goalDetect = goalMiddle.getBoundingClientRect();
+
+function updateBallCoordinates() {
+  let newBallCoordinates = ball.getBoundingClientRect();
+  let newGoalCoordinates = goalMiddle.getBoundingClientRect();
+  if ((newBallCoordinates.top = newGoalCoordinates.bottom) && 
+      (newBallCoordinates.left > newGoalCoordinates.left) && 
+      (newBallCoordinates.right < newGoalCoordinates.right)) {
+        return 'goal';
+        
+      }
+};
+
+window.setInterval(updateBallCoordinates, 1000); //updates ball coordinates every second
 
