@@ -43,6 +43,7 @@ function up() {
 document.addEventListener('keydown', event => {
   if (event.code === 'Space') {
     ball.style.bottom = '911px';
+    moveBy = 0;
   }
 });
 resetButton.addEventListener("mousedown", down); //add reset button function on up()
@@ -50,7 +51,8 @@ resetButton.addEventListener("mousedown", down); //add reset button function on 
 
 function down() {
     ball.style.bottom = "0px";
-
+    moveBy = 7;
+    
 };
 
 
@@ -65,7 +67,7 @@ window.addEventListener('load', () => {
   projectile.style.left = 0;
 });
 
-window.addEventListener('keydown', (e) => {
+window.addEventListener('keydown', function moveLeftRight (e) {
   switch (e.key) {
     case 'ArrowLeft':
       projectile.style.left = parseInt(projectile.style.left) - moveBy + 'px';
@@ -137,9 +139,9 @@ let goalDetect = goalMiddle.getBoundingClientRect();
 let scoreCount = document.getElementById('score');
 
 let celebrate = document.getElementById('celebration');
-let goalCele = document.createElement('h1');
+let goalCele = document.createElement('h2');
 goalCele.id = 'cele';
-goalCele.innerHTML = 'GOAL!!!'
+goalCele.innerHTML = 'GOAL!!! <p>Move Goal to shoot again.<p>'
 
 let interval = window.setInterval(updateBallCoordinates, 100); //updates ball coordinates every 1/10 second
 let score = 0;
@@ -163,5 +165,5 @@ function updateBallCoordinates() {
 };
 
 
-//let interval = window.setInterval(updateBallCoordinates, 100); //updates ball coordinates every 1/10 second
+
 

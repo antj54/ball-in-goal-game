@@ -64,6 +64,7 @@ header {
 }
 
 #cele {
+    padding-top: 10px;
     margin-left: 42%;
     margin-right: 42%;
     text-align: center;
@@ -73,6 +74,10 @@ header {
     border-radius: 10px;
     background-color: #b93022;
     box-shadow: 1px 1px #080f03;
+}
+
+#cele p {
+    font-size: 1rem;
 }
 
 #field {
