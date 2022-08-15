@@ -25,6 +25,7 @@ function play() {
   down();
   playButton.removeEventListener('mousedown', play ); //remove play button function on execution
   playButton.style.cursor = 'default';
+  
 };
 
 playButton.addEventListener('mousedown', play); // can trigger play with button click or enter key
@@ -120,6 +121,7 @@ function randomSpot() {
   console.log(goalCoordinates)
   console.log(spot);
   goal.style.left = (spot + 'px');
+  interval = window.setInterval(updateBallCoordinates, 100);
   if (spot >= fieldWidth) {
     goal.style.right = '160px'
   }
@@ -139,14 +141,19 @@ let goalCele = document.createElement('h1');
 goalCele.id = 'cele';
 goalCele.innerHTML = 'GOAL!!!'
 
+let interval = window.setInterval(updateBallCoordinates, 100); //updates ball coordinates every 1/10 second
+let score = 0;
 function updateBallCoordinates() {
   let newBallCoordinates = ball.getBoundingClientRect();
   let newGoalCoordinates = goalMiddle.getBoundingClientRect();
   if (newBallCoordinates.top <= newGoalCoordinates.bottom && 
       newBallCoordinates.left > newGoalCoordinates.left && 
       newBallCoordinates.right < newGoalCoordinates.right) {
-
+        window.clearInterval(interval);//clears interval after goal scored
         celebrate.appendChild(goalCele); //adds goal celebration
+        score++; //increment score
+        document.getElementById('score').innerHTML = "Score: " + score; //increment score in HTML;
+        
         return true;
 
       } else {
@@ -155,5 +162,6 @@ function updateBallCoordinates() {
 
 };
 
-window.setInterval(updateBallCoordinates, 100); //updates ball coordinates every 1/10 second
+
+//let interval = window.setInterval(updateBallCoordinates, 100); //updates ball coordinates every 1/10 second
 

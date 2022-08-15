@@ -188,3 +188,9 @@ button {
     border-radius: 2px;
     color: gold;
 }
+
+#score {
+    text-align: center;
+    color: gold;
+    text-shadow: 1px 1px black;
+}
